@@ -69,18 +69,24 @@
     <button class="action-button esri-icon-polygon" id="areaButton" type="button" title="Measure area"></button>
   </div>
   <script type="text/javascript" src="map.js"></script>
-  <script>
+<script>
   require(["dojo/domReady!"], function() {
-    setTimeout(function() {
-      var items = document.querySelectorAll(".esri-attribution span");
-      items.forEach(function(el) {
-        if (el.textContent.includes("OpenStreetMap")) {
-          el.style.display = "none";
-        }
-      });
-    }, 1000); // wait for attribution to load
+    function removeOSMText() {
+      var attribution = document.querySelector(".esri-attribution");
+      if (attribution) {
+        attribution.querySelectorAll("*").forEach(function(el) {
+          if (el.textContent.includes("OpenStreetMap")) {
+            el.remove();
+          }
+        });
+      }
+    }
+    // Run once and then every half second in case it gets re-rendered
+    removeOSMText();
+    setInterval(removeOSMText, 500);
   });
 </script>
+
 
 </body>
 </html>
