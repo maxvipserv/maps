@@ -7,9 +7,7 @@
   />
   <title>Max+ Maps</title>
   <style>
-    .esri-attribution span:contains('OpenStreetMap') {
-  display: none !important;
-}
+ 
 
     html,
     body,
@@ -49,7 +47,9 @@
     .esri-attribution__powered-by {
   font-size: 0; /* hide original text */
 }
-
+    .esri-attribution span:contains('OpenStreetMap') {
+  display: none !important;
+}
 .esri-attribution__powered-by::after {
   content: "Powered by Max+ Maps"; /* your new text */
   font-size: 12px;
