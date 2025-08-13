@@ -7,6 +7,10 @@
   />
   <title>Max+ Maps</title>
   <style>
+    .esri-attribution span:contains('OpenStreetMap') {
+  display: none !important;
+}
+
     html,
     body,
     #viewDiv {
@@ -65,5 +69,18 @@
     <button class="action-button esri-icon-polygon" id="areaButton" type="button" title="Measure area"></button>
   </div>
   <script type="text/javascript" src="map.js"></script>
+  <script>
+  require(["dojo/domReady!"], function() {
+    setTimeout(function() {
+      var items = document.querySelectorAll(".esri-attribution span");
+      items.forEach(function(el) {
+        if (el.textContent.includes("OpenStreetMap")) {
+          el.style.display = "none";
+        }
+      });
+    }, 1000); // wait for attribution to load
+  });
+</script>
+
 </body>
 </html>
